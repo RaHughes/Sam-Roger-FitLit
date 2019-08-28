@@ -22,6 +22,10 @@ let miles = document.querySelector('.main_activity_miles');
 let activityGoal = document.querySelector('.main_activity_goal');
 let activityList = document.querySelector('.main_activity_list');
 let sleepMessage = document.querySelector('.main_sleep_message')
+let activitySteps = document.querySelector('.main_activity_week_steps')
+let activityStairs = document.querySelector('.main_activity_week_stairs')
+let activityMins = document.querySelector('.main_activity_week_mins')
+
 
 /*************** Event Listeners *************/
 window.addEventListener('load', initializePage(userData, hydrationData, sleepData, activityData))
@@ -219,14 +223,24 @@ function appendActivityList(array, obj, user) {
     if (dateActivityList.value === array[i]) {
     	obj.findNumSteps(dateActivityList.value)
     	obj.findMinActive(dateActivityList.value)
+    	activitySteps.innerHTML = `Number of steps throughout week: ${obj.findWeeklySteps(i)}`
+    	activityStairs.innerHTML = `Flights of stairs climbed throughout week: ${obj.findWeeklyStairs(i)}`
+    	activityMins.innerHTML = `Minutes active throughout week: ${obj.findWeeklyMins(i)}`
     		}
    dateActivityList.addEventListener('change', function() {
-   obj.findNumSteps(dateActivityList.value)
-   obj.findMinActive(dateActivityList.value)
-		steps.innerHTML = `Number of steps today: ${obj.numSteps}`
-		minutes.innerHTML =`Number of Minutes active: ${obj.minutesActive}`
-		miles.innerHTML = `Numer of Miles Traveled: ${obj.findDistanceMiles(user, obj)}`
-		goal.innerHTML = `${obj.checkStepGoal(user, obj)}`
+   	obj.findNumSteps(dateActivityList.value)
+   	obj.findMinActive(dateActivityList.value)
+			steps.innerHTML = `Number of steps today: ${obj.numSteps}`
+			minutes.innerHTML =`Number of Minutes active: ${obj.minutesActive}`
+			miles.innerHTML = `Numer of Miles Traveled: ${obj.findDistanceMiles(user, obj)}`
+			goal.innerHTML = `${obj.checkStepGoal(user, obj)}`
+			for (let i = 0; i < array.length; i++) {
+				if (dateActivityList.value === array[i]) {
+					activitySteps.innerHTML = `Number of steps throughout week: ${obj.findWeeklySteps(i)}`
+    			activityStairs.innerHTML = `Flights of stairs climbed throughout week: ${obj.findWeeklyStairs(i)}`
+    			activityMins.innerHTML = `Minutes active throughout week: ${obj.findWeeklyMins(i)}`
+				}
+			}
 		})
    obj.findNumSteps(dateActivityList.value)
    obj.findMinActive(dateActivityList.value)
