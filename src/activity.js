@@ -44,6 +44,60 @@ class Activity {
 			return "Step Goal not met. Keep working!"
 		}
 	}
+
+	findWeeklySteps(index) {
+		this.week = []
+		let weekDays = []
+		if (index + 7 < this.data.length) {
+			for (let i = index; i < index + 7; i++){
+				this.week.push(this.data[i])
+			}
+		} else {
+			for (let i = index; i < this.data.length; i++){
+				this.week.push(this.data[i])
+			}
+		}
+		for (let i = 0; i < this.week.length; i++) {
+		weekDays.push(this.week[i].numSteps) 
+			}
+		return weekDays
+	}
+
+	findWeeklyStairs(index) {
+		this.week = []
+		let weekDays = []
+		if (index + 7 < this.data.length) {
+			for (let i = index; i < index + 7; i++){
+				this.week.push(this.data[i])
+			}
+		} else {
+			for (let i = index; i < this.data.length; i++){
+				this.week.push(this.data[i])
+			}
+		}
+		for (let i = 0; i < this.week.length; i++) {
+		weekDays.push(this.week[i].flightsOfStairs) 
+			}
+		return weekDays
+	}
+
+	findWeeklyMins(index) {
+		this.week = []
+		let weekDays = []
+		if (index + 7 < this.data.length) {
+			for (let i = index; i < index + 7; i++){
+				this.week.push(this.data[i])
+			}
+		} else {
+			for (let i = index; i < this.data.length; i++){
+				this.week.push(this.data[i])
+			}
+		}
+		for (let i = 0; i < this.week.length; i++) {
+		weekDays.push(this.week[i].minutesActive) 
+			}
+		return weekDays
+	}
 }
 
 if (typeof module !== 'undefined') {
