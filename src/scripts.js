@@ -21,6 +21,7 @@ let minutes = document.querySelector('.main_activity_minutes');
 let miles = document.querySelector('.main_activity_miles');
 let activityGoal = document.querySelector('.main_activity_goal');
 let activityList = document.querySelector('.main_activity_list');
+let sleepMessage = document.querySelector('.main_sleep_message')
 
 /*************** Event Listeners *************/
 window.addEventListener('load', initializePage(userData, hydrationData, sleepData, activityData))
@@ -112,12 +113,17 @@ function appendSleepList(array, obj) {
     	sleepQuality.innerHTML = `Sleep quality throughout week: ${obj.findSleepWeekQuality(i)}`
     	}
 	}
-		dateSleepList.addEventListener('change', function() {
-		obj.findSleepDay(dateSleepList.value)
-		obj.findSleepQuality(dateSleepList.value)
-		sleepPerDay.innerHTML = `Hours slept for day: ${obj.day}  Quality of sleep: ${obj.quality}`;
-		for (let i = 0; i < array.length; i++) {
-			if (dateSleepList.value === array[i]) {
+	dateSleepList.addEventListener('change', function() {
+	obj.findSleepDay(dateSleepList.value)
+	obj.findSleepQuality(dateSleepList.value)
+	if (obj.day >= 8) {
+		sleepMessage.innerHTML = `Good job getting enough sleep!`
+	} else {
+			sleepMessage.innerHTML = `Get more sleep!`
+	}
+	sleepPerDay.innerHTML = `Hours slept for day: ${obj.day}  Quality of sleep: ${obj.quality}`;
+	for (let i = 0; i < array.length; i++) {
+		if (dateSleepList.value === array[i]) {
     	sleepWeek.innerHTML = `Hours slept throughout week: ${obj.findSleepWeek(i)}`
     	sleepQuality.innerHTML = `Sleep quality throughout week: ${obj.findSleepWeekQuality(i)}`
     			}
@@ -126,6 +132,11 @@ function appendSleepList(array, obj) {
 	obj.findSleepDay(dateSleepList.value)
 	obj.findSleepQuality(dateSleepList.value)
 	sleepPerDay.innerHTML = `Hours slept for day: ${obj.day}  Quality of sleep: ${obj.quality}`;
+	if (obj.day >= 8) {
+			sleepMessage.innerHTML = `Good job getting enough sleep!`
+	} else {
+			sleepMessage.innerHTML = `Get more sleep!`
+	}
 }
 
 function appendMostSleep(singleSleepObj, sleepObj, userObj) {
