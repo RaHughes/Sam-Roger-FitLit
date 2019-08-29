@@ -12,38 +12,66 @@ describe('Activity', function() {
 		activityRepository.findUserID(5);
 		expect(activity.data.length).to.equal(100)
 	})
-	// it('should calculate average number of hours slept per day', function() {
-	// sleepRepository.findUserID(5)
-	// expect(sleep.findAvg('hoursSlept').toFixed(2)).to.equal('7.68')
-	// });
-	// it('should calculate average quality of sleep per day', function() {
-	// 	sleepRepository.findUserID(5)
-	// 	expect(sleep.findAvg('sleepQuality').toFixed(2)).to.equal('3.13')
-	// })
-	// it('should be able to find the hours slept current date for each user', function() {
-	// sleepRepository.findUserID(5)
-	// sleep.findSleepDay('2019/06/15')
-	// expect(sleep.day).to.eql(4.1)
-	// });
-	// it('should be able to find all dates for each user', function() {
-	// sleepRepository.findUserID(5)
-	// expect(sleep.findSleepDates().length).to.equal(500)
-	// });
-	// it('should be able to find the sleep quality current date for each user', function() {
-	// sleepRepository.findUserID(5)
-	// sleep.findSleepQuality('2019/06/15')
-	// expect(sleep.quality).to.eql(3.6)
-	// });
-	// it('should display number of hours slept over the course of a week', function() {
-	// sleepRepository.findUserID(5)
-	// expect(sleep.findSleepWeek(0)).to.eql([4.1,7.4,10.5,5.2,4.8,10.1,9.6])
-	// });
-	// it('should display sleep quality over the course of a week', function() {
-	// sleepRepository.findUserID(5)
-	// expect(sleep.findSleepWeekQuality(0)).to.eql([ 3.6,2.4,3.7,4.1,3.4,3.5,4.1])
-	// });
-	// it('should be able to get an array of dates based on the current day', function() {
-	// sleepRepository.findUserID(5)
-	// expect(sleep.compareQualityAverage(0)).to.eql(["2019/06/15", "2019/06/16", "2019/06/17", "2019/06/18", "2019/06/19", "2019/06/20", "2019/06/21"])
-	// });
+	it('should find number of steps for each user per day', function() {
+		activityRepository.findUserID(5)
+		activity.findNumSteps('2019/06/15')
+	expect(activity.numSteps).to.equal(11374)
+	});
+	it('should find minutes active for each user per day', function() {
+		activityRepository.findUserID(5)
+		activity.findMinActive('2019/06/15')
+		expect(activity.minutesActive).to.equal(213)
+	})
+	it('should be able to calculate miles walked by a user per day', function() {
+		activityRepository.findUserID(5)
+		expect(activity.findDistanceMiles(  {
+    "id": 5,
+    "name": "Erick Schaden",
+    "address": "514 Mayert Walk, Jordaneside SC 55023-6523",
+    "email": "Vanessa_Gerhold@gmail.com",
+    "strideLength": 3.1,
+    "dailyStepGoal": 8000,
+    "friends": [
+      13,
+      44,
+      49,
+      33,
+      10
+    ]
+  }, activity)).to.equal('6.68')
+	});
+	it('should be able to find all dates for each user', function() {
+		activityRepository.findUserID(5)
+		expect(activity.findActivityDates().length).to.equal(500)
+	});
+	it('should be able to display a message based on a users step goal', function() {
+	activityRepository.findUserID(5)
+	expect(activity.checkStepGoal({
+    "id": 5,
+    "name": "Erick Schaden",
+    "address": "514 Mayert Walk, Jordaneside SC 55023-6523",
+    "email": "Vanessa_Gerhold@gmail.com",
+    "strideLength": 3.1,
+    "dailyStepGoal": 8000,
+    "friends": [
+      13,
+      44,
+      49,
+      33,
+      10
+    ]
+  }, activity)).to.equal("Step Goal not met. Keep working!")
+	});
+	it('should display number of steps over the course of a week', function() {
+	activityRepository.findUserID(5)
+	expect(activity.findWeeklySteps(0)).to.eql([11374, 9350, 13120, 4765, 8914, 4760, 2177])
+	});
+	it('should display flights of stairs climbed over the course of a week', function() {
+	activityRepository.findUserID(5)
+	expect(activity.findWeeklyStairs(0)).to.eql([13, 38, 25, 25, 6, 46, 21])
+	});
+	it('should display minutes active over the course of a week', function() {
+	activityRepository.findUserID(5)
+	expect(activity.findWeeklyMins(0)).to.eql([213, 167,151, 35, 191, 219, 142])
+	});
 })
