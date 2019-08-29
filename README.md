@@ -4,7 +4,7 @@
 ## General Info
 
 A project for deeping our understanding of implementing ES6 classes that communicate to each other as needed, writing modular, reusable code that follows SRP (Single Responsibility Principle), implementing a robust testing suite using TDD, and using object and array prototype methods to perform data manipulation in Turing's Front-End Engineering course, Module 2.
-Repository can be found <a href="https://github.com/RaHughes/Sam-Roger-FitLit">here</a> and the project specs can be found <a href="https://frontend.turing.io/projects/fitlit.html">here</a>. The live page can be accessed <a href="">here</a>.
+Repository can be found <a href="https://github.com/RaHughes/Sam-Roger-FitLit">here</a> and the project specs can be found <a href="https://frontend.turing.io/projects/fitlit.html">here</a>. The live page can be accessed <a href="https://rahughes.github.io/Sam-Roger-FitLit/src/index.html">here</a>.
 
 ## Contributors 
 
@@ -21,7 +21,6 @@ FitLit is the first paired projects we were assigned as a mod two student at Tur
 - HTML5
 - CSS3
 - JavaScript
-- Blood, sweat, and tears
 
 
 ## Screenshots
