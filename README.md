@@ -26,6 +26,6 @@ FitLit is the first paired projects we were assigned as a mod two student at Tur
 
 ## Screenshots
 
-![Desktop Version Without ToDo Lists]( "Desktop layout one")
+![Desktop Version Without ToDo Lists](https://github.com/RaHughes/Sam-Roger-FitLit/blob/master/Sam-Roger-FitLit-1.png "Desktop layout one")
 
-![Desktop Version With ToDo Lists]( "Desktop layout two")
+![Desktop Version With ToDo Lists](https://github.com/RaHughes/Sam-Roger-FitLit/blob/master/Sam-Roger-FitLit-2.png "Desktop layout two")
